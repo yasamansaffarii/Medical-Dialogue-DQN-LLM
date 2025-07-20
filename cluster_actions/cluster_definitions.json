@@ -1,0 +1,5 @@
+{
+  "0": {"name": "symptom_question", "prompt": "Ask the patient about their symptoms."},
+  "1": {"name": "lifestyle_question", "prompt": "Ask the patient about their lifestyle habits."},
+  "2": {"name": "diagnosis", "prompt": "Provide a medical diagnosis based on common cold symptoms."}
+}
