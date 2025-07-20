@@ -1,3 +1,7 @@
+from sentence_transformers import SentenceTransformer
+
+model = SentenceTransformer('all-MiniLM-L6-v2')  # یا مدل پزشکی اگه داری
+
 def summarize_state(dialog_history, symptom_list):
     last_doctor = ""
     last_patient = ""
@@ -10,12 +14,17 @@ def summarize_state(dialog_history, symptom_list):
         elif uttr["speaker"] == "patient":
             last_patient = uttr["text"]
 
-            # چک کردن علائم توی جمله بیمار
             for idx, symptom in enumerate(symptom_list):
                 if symptom in uttr["text"].lower():
                     symptoms[idx] = 1
 
-    # خروجی = علائم + طول دیالوگ (نرمال شده)
-    state_vector = symptoms + [num_turns / 100]
+    # تبدیل تاریخچه به متن
+    history_text = " ".join([u["text"] for u in dialog_history])
+
+    # انکدینگ تاریخچه با SentenceTransformer
+    embedding = model.encode(history_text)
+
+    # خروجی = علائم + طول دیالوگ + انکدینگ متن
+    state_vector = symptoms + [num_turns / 100] + list(embedding)
 
     return state_vector
