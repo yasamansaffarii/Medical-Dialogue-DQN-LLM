@@ -27,6 +27,7 @@ n_epochs = 50
 target_update_freq = 5
 
 for epoch in range(n_epochs):
+
     random.shuffle(all_dialogs)
     total_reward = 0
 
@@ -49,3 +50,7 @@ for epoch in range(n_epochs):
         agent.update_target_network()
 
     print(f"Epoch {epoch}, Total Reward: {total_reward}")
+
+    # ذخیره وزن‌ها هر 5 epoch
+    if epoch % 5 == 0:
+        torch.save(agent.q_network.state_dict(), "model_weights.pth")
