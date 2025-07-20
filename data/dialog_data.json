@@ -1,0 +1,14 @@
+[
+  [
+    {"speaker": "doctor", "text": "Hello, how are you feeling today?"},
+    {"speaker": "patient", "text": "I have a cough and a slight fever."},
+    {"speaker": "doctor", "text": "How long have you had these symptoms?"},
+    {"speaker": "patient", "text": "About three days."}
+  ],
+  [
+    {"speaker": "doctor", "text": "Do you smoke?"},
+    {"speaker": "patient", "text": "No, I don't smoke."},
+    {"speaker": "doctor", "text": "Any chest pain?"},
+    {"speaker": "patient", "text": "No pain."}
+  ]
+]
